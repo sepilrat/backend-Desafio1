@@ -69,9 +69,9 @@ class productManager {
 
 let pm = new productManager();
 pm.addProduct("titulo", "desc", 2, "", 2, 2);
-// pm.addProduct("c", "f", 34, "tum", 2, 2); // no lo carga por duplicado y e informa de que ya existe
-// pm.addProduct("d", "h", 34, "tum", 5, 3);
-// console.log("producto 2 " + pm.getProductById(2)); //devuelve el objeto
+pm.addProduct("c", "f", 34, "tum", 2, 2); // no lo carga por duplicado y e informa de que ya existe
+pm.addProduct("d", "h", 34, "tum", 5, 3);
+console.log("producto 2 " + pm.getProductById(2)); //devuelve el objeto
 pm.getProductById(5); // devuelve error
 
 console.log(pm.getProducts()); //devuelve el array de productos
