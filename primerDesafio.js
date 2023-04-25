@@ -20,12 +20,35 @@ class productManager {
     return this.products;
   };
   addProduct = (title, description, price, thumbnail, code, stock) => {
-    if(title==="" || description ==="" || price==="" || thumbnail ===""|| code==="" || stock===""){
-        console.log("Ningún parámetro debe ser nulo")
-        return;
-    }
 
-    if (!this.products.find((p) => p.code === code)) {
+
+     if(typeof(title)!=="string" || title==="")
+     { 
+        console.log("El titulo debe ser string no vacío");
+        return;
+     }
+     if(typeof(description)!== "string" || description==="")
+     {
+        console.log("La descripción debe ser string no nulo");
+        return;
+     }
+     if(typeof(price)!=="number" || price <0)
+     {
+        console.log("El precio debe ser un número mayor o igual a cero");
+        return;
+     }
+     if(typeof(code)!=="number" || code <0)
+     {
+        console.log("El código debe ser un número mayor o igual a cero");
+        return;
+     }
+     if(typeof(stock)!=="number" || stock <0)
+     {
+        console.log("El stock debe ser un número mayor o igual a cero");
+        return;
+     }
+
+       if (!this.products.find((p) => p.code === code)) {
       const product = {
         id: this.generarID(),
         title: title,
@@ -37,7 +60,7 @@ class productManager {
       };
       this.products.push(product);
     } else {
-      console.log("El producto con code = " + code + "ya existe");
+      console.log("El producto con code = " + code + " ya existe");
     }
 
     return;
@@ -45,10 +68,10 @@ class productManager {
 }
 
 let pm = new productManager();
-pm.addProduct("a", "b", 34, "", 2, 2);
-pm.addProduct("c", "d", 34, "tum", 2, 2); // no lo carga por duplicado y e informa de que ya existe
-pm.addProduct("d", "h", 34, "tum", 5, 3);
-console.log("producto 2 " + pm.getProductById(2)); //devuelve el objeto
+pm.addProduct("titulo", "desc", 2, "", 2, 2);
+// pm.addProduct("c", "f", 34, "tum", 2, 2); // no lo carga por duplicado y e informa de que ya existe
+// pm.addProduct("d", "h", 34, "tum", 5, 3);
+// console.log("producto 2 " + pm.getProductById(2)); //devuelve el objeto
 pm.getProductById(5); // devuelve error
 
 console.log(pm.getProducts()); //devuelve el array de productos
